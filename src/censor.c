@@ -1,5 +1,6 @@
 /* Copyright (C) 2014 jaseg <github@jaseg.net>
  *
+ Thanks jaseg Ill send it fom here. dev@syon.ca
  * DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
  * Version 2, December 2004
  *
@@ -25,10 +26,15 @@
 #include <unistd.h>
 #include <wchar.h>
 
+//charpointer pointer aka
+// a pointer(64bit) that points to a pointer(64bit) that points to a char(8bit)
+
+// argc = number of arugments, argv = the actual array of strings
 int main(int argc, char** argv)
 {
+    
     char* foo[] = { "-" };
-    char** inputs = argv + 1;
+    char** inputs = argv + 1; //pointer is first 
     char** inputs_end = argv + argc;
     if (inputs == inputs_end) {
         inputs = foo;
@@ -50,6 +56,7 @@ int main(int argc, char** argv)
         }
 
         int c;
+        // Reads the next wide character from the given input stream. getwc() may be implemented as a macro and may evaluate stream more than once. 
         while ((c = fgetwc(f)) > 0) {
             if (!escape_state) {
                 if (c == '\e') {
