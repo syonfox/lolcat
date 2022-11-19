@@ -1,13 +1,14 @@
 
 CC ?= gcc
-LOLCAT_SRC ?= lolcat.c
-CENSOR_SRC ?= censor.c
+LOLCAT_SRC ?= src/lolcat.c
+CENSOR_SRC ?= src/censor.c
+COWSAY_SRC ?= src/cowsay.c
 CFLAGS ?= -std=c11 -Wall -Wextra -O3 -Wno-sign-compare
 LIBS := -lm
 
 DESTDIR ?= /usr/local/bin
 
-all: lolcat censor
+all: lolcat censor cowsay
 
 debug: CFLAGS += -g
 debug: all
@@ -20,9 +21,13 @@ lolcat: $(LOLCAT_SRC)
 censor: $(CENSOR_SRC)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
+cowsay: $(COWSAY_SRC)
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
+
+
 install: lolcat censor
 	install lolcat $(DESTDIR)/lolcat
 	install censor $(DESTDIR)/censor
-
+	install cowsay $(DESTDIR)/cowsay
 clean:
-	rm -f lolcat censor
+	rm -f lolcat censor cowsay

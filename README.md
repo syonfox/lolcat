@@ -8,6 +8,12 @@
 
 ![](./sl.gif)
 
+
+## Im Doin What the fuck I please and making this a phat cat.
+## Woo, I figure this base c project is a good place to start.
+More to come on the topic of directions... forward.
+
+
 ## Installation
 
 ### Archlinux
