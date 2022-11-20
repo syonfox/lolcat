@@ -26,10 +26,10 @@
 #include <unistd.h>
 #include <wchar.h>
 
-//charpointer pointer aka
+//char pointer pointer aka
 // a pointer(64bit) that points to a pointer(64bit) that points to a char(8bit)
 
-// argc = number of arugments, argv = the actual array of strings
+// argc = number of arguments, argv = the actual array of strings
 int main(int argc, char** argv)
 {
     

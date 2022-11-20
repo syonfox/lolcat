@@ -14,26 +14,34 @@
 More to come on the topic of directions... forward.
 
 ### THings
-lolcat -> raimbo text
-cowsay -> text bubles from a cow
-censor -> replace chars with scensored versions
-fortune -> get a quote
+- lolcat -> raimbo text
+- cowsay -> text bubbles from a cow
+- censor -> replace chars with censored versions
+- fortune -> get a quote
 
 noscat -> A server 
 
 ## Installation
 
 ```sh
-apt install build-essentials git make
 
+apk add git make alpine-sdk
+apt install build-essentials git make
 git clone https://github.com/syonfox/lolcat.git
 cd lolcat
 make clean ; # remove old bins and clean any shit up
-make all ; # make all code read the Makefile
-sudo make instal ; # install into system bin folder
+# if nproc isint available was on alpine 3.16
+#NUMCORES=`grep ^cpu\\scores /proc/cpuinfo | uniq |  awk '{print $4}'`
+make all -j`nproc`; # use all the cores #https://stackoverflow.com/a/17089001/4530300
+
+sudo make install ; # install into system bin folder
+
+cowsay "$(cat README.md)" | lolcat ;
+
+
 ```
 
-
+## Original c-lolcat Install
 ### Archlinux
 
 There's an [AUR package](https://aur.archlinux.org/packages/c-lolcat):
