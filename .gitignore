@@ -1,2 +1,7 @@
 lolcat.o
 censor.o
+cowsay.o
+noscat.o
+node_modules
+.idea
+cmake-build-debug
