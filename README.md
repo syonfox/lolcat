@@ -9,12 +9,30 @@
 ![](./sl.gif)
 
 
-## Im Doin What the fuck I please and making this a phat cat.
+## I'm Doin' What the fuck I please and making this a phat cat.
 ## Woo, I figure this base c project is a good place to start.
 More to come on the topic of directions... forward.
 
+### THings
+lolcat -> raimbo text
+cowsay -> text bubles from a cow
+censor -> replace chars with scensored versions
+fortune -> get a quote
+
+noscat -> A server 
 
 ## Installation
+
+```sh
+apt install build-essentials git make
+
+git clone https://github.com/syonfox/lolcat.git
+cd lolcat
+make clean ; # remove old bins and clean any shit up
+make all ; # make all code read the Makefile
+sudo make instal ; # install into system bin folder
+```
+
 
 ### Archlinux
 

@@ -24,7 +24,6 @@ censor: $(CENSOR_SRC)
 cowsay: $(COWSAY_SRC)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
-
 install: lolcat censor
 	install lolcat $(DESTDIR)/lolcat
 	install censor $(DESTDIR)/censor

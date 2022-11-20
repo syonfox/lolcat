@@ -1,4 +1,6 @@
-/* Copyright (C) 2020 jaseg <github@jaseg.net>
+/*
+ * Copyright (C) 2020 kier <dev@syon.ca>
+ *  Thanks (C) 2020 jaseg <github@jaseg.net>
  *
  * DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
  * Version 2, December 2004
@@ -30,31 +32,31 @@
 #include "math.h"
 
 static char helpstr[] = "\n"
-                        "Usage: lolcat [-h horizontal_speed] [-v vertical_speed] [--] [FILES...]\n"
-                        "\n"
-                        "Concatenate FILE(s), or standard input, to standard output.\n"
-                        "With no FILE, or when FILE is -, read standard input.\n"
-                        "\n"
-                        "--horizontal-frequency <d>, -h <d>: Horizontal rainbow frequency (default: 0.23)\n"
-                        "  --vertical-frequency <d>, -v <d>: Vertical rainbow frequency (default: 0.1)\n"
-                        "                 --force-color, -f: Force color even when stdout is not a tty\n"
-                        "             --no-force-locale, -l: Use encoding from system locale instead of\n"
-                        "                                    assuming UTF-8\n"
-                        "                      --random, -r: Random colors\n"
-                        "        --color_offset <d>, -o <d>: Start with a different color\n"
-                        "                       --24bit, -b: Output in 24-bit \"true\" RGB mode (slower and\n"
-                        "                                    not supported by all terminals)\n"
-                        "                         --version: Print version and exit\n"
-                        "                            --help: Show this message\n"
-                        "\n"
-                        "Examples:\n"
-                        "  lolcat f - g      Output f's contents, then stdin, then g's contents.\n"
-                        "  lolcat            Copy standard input to standard output.\n"
-                        "  fortune | lolcat  Display a rainbow cookie.\n"
-                        "\n"
-                        "Report lolcat bugs to <https://github.com/jaseg/lolcat/issues>\n"
-                        "lolcat home page: <https://github.com/jaseg/lolcat/>\n"
-                        "Original idea: <https://github.com/busyloop/lolcat/>\n";
+    "Usage: lolcat [-h horizontal_speed] [-v vertical_speed] [--] [FILES...]\n"
+    "\n"
+    "Concatenate FILE(s), or standard input, to standard output.\n"
+    "With no FILE, or when FILE is -, read standard input.\n"
+    "\n"
+    "--horizontal-frequency <d>, -h <d>: Horizontal rainbow frequency (default: 0.23)\n"
+    "  --vertical-frequency <d>, -v <d>: Vertical rainbow frequency (default: 0.1)\n"
+    "                 --force-color, -f: Force color even when stdout is not a tty\n"
+    "             --no-force-locale, -l: Use encoding from system locale instead of\n"
+    "                                    assuming UTF-8\n"
+    "                      --random, -r: Random colors\n"
+    "        --color_offset <d>, -o <d>: Start with a different color\n"
+    "                       --24bit, -b: Output in 24-bit \"true\" RGB mode (slower and\n"
+    "                                    not supported by all terminals)\n"
+    "                         --version: Print version and exit\n"
+    "                            --help: Show this message\n"
+    "\n"
+    "Examples:\n"
+    "  lolcat f - g      Output f's contents, then stdin, then g's contents.\n"
+    "  lolcat            Copy standard input to standard output.\n"
+    "  fortune | lolcat  Display a rainbow cookie.\n"
+    "\n"
+    "Report lolcat bugs to <https://github.com/jaseg/lolcat/issues>\n"
+    "lolcat home page: <https://github.com/jaseg/lolcat/>\n"
+    "Original idea: <https://github.com/busyloop/lolcat/>\n";
 
 #define ARRAY_SIZE(foo) (sizeof(foo) / sizeof(foo[0]))
 const unsigned char codes[] = { 39, 38, 44, 43, 49, 48, 84, 83, 119, 118, 154, 148, 184, 178, 214, 208, 209, 203, 204, 198, 199, 163, 164, 128, 129, 93, 99, 63, 69, 33 };
@@ -175,7 +177,6 @@ int main(int argc, char** argv)
     }
 
     i = 0;
-    //for each string pointer / file
     for (char** filename = inputs; filename < inputs_end; filename++) {
         wint_t (*this_file_read_wchar)(FILE*); /* Used for --help because fmemopen is universally broken when used with fgetwc */
         FILE* f;

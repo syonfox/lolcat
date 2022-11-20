@@ -1,9 +1,10 @@
 //wget https://raw.githubusercontent.com/federicobond/fedux/master/src/software/cowsay.c
 
-#include "../../include/stdio.h"
-#include "../../include/string.h"
-#include "../../include/software/commons.h"
-
+//#include "../../include/stdio.h"
+//#include "../../include/string.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int
 args_shift(int n, int *argc, char ***argv)
@@ -169,3 +170,6 @@ int exec_cowsay(int argc, char **argv)
     return 0;
 }
 
+int main(int argc, char** argv) {
+    return exec_cowsay(argc, argv);
+}
